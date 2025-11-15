@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b6sbn7efkckjc"]
+
+[ext_resource type="FontFile" uid="uid://dqqk2xlhqsuwu" path="res://font.ttf" id="1_24q3n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24q3n"]
+bg_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ru1r"]
+bg_color = Color(0.6, 0.6, 0.6, 0.16078432)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmmo2"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[resource]
+default_font = ExtResource("1_24q3n")
+default_font_size = 9
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_24q3n")
+ProgressBar/colors/font_color = Color(0.53, 0.53, 0.53, 1)
+ProgressBar/styles/background = SubResource("StyleBoxFlat_0ru1r")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_vmmo2")

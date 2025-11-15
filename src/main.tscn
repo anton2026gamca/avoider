@@ -1,15 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4cqhy3hqpx56"]
+[gd_scene load_steps=6 format=3 uid="uid://d4cqhy3hqpx56"]
 
 [ext_resource type="Script" uid="uid://bfvcvvvty05pu" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dy7qgl651lmer" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://cmfaxr5jj2rf1" path="res://camera.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cqw5f3m8a2bxt" path="res://meteoroid.tscn" id="3_h2yge"]
+[ext_resource type="Theme" uid="uid://b6sbn7efkckjc" path="res://main.tres" id="5_lquwl"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1bvp3")
 meteoroid_scene = ExtResource("3_h2yge")
 
-[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="." node_paths=PackedStringArray("damage_bar", "speed_bar") instance=ExtResource("1_ig7tw")]
+damage_bar = NodePath("../UI/MarginContainer/Stats/MarginContainer/VBoxContainer/Damage/ProgressBar")
+speed_bar = NodePath("../UI/MarginContainer/Stats/MarginContainer/VBoxContainer/Speed/ProgressBar")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 ignore_rotation = false
@@ -19,3 +22,62 @@ drag_right_margin = 0.69
 drag_bottom_margin = 0.44
 script = ExtResource("2_0xm2m")
 player = NodePath("../Player")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Stats" type="PanelContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("5_lquwl")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/Stats"]
+layout_mode = 2
+theme = ExtResource("5_lquwl")
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/Stats/MarginContainer"]
+layout_mode = 2
+
+[node name="Damage" type="HBoxContainer" parent="UI/MarginContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/MarginContainer/Stats/MarginContainer/VBoxContainer/Damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Damage: "
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/MarginContainer/Stats/MarginContainer/VBoxContainer/Damage"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("5_lquwl")
+rounded = true
+
+[node name="Speed" type="HBoxContainer" parent="UI/MarginContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/MarginContainer/Stats/MarginContainer/VBoxContainer/Speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed: "
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/MarginContainer/Stats/MarginContainer/VBoxContainer/Speed"]
+custom_minimum_size = Vector2(100, 9)
+layout_mode = 2
+theme = ExtResource("5_lquwl")
+rounded = true
+show_percentage = false

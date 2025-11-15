@@ -9,10 +9,18 @@ class_name Player
 @export var collision_damping: float = 0.5
 @export var collision_push_force: float = 0.5
 
+@export_category("UI")
+@export var damage_bar: ProgressBar
+@export var speed_bar: ProgressBar
+
 @onready var acceleration_particles: CPUParticles2D = $AccelerationParticles
 
 var damage: float = 0
 var speed: float = 0
+
+
+func _ready() -> void:
+	speed_bar.max_value = max_speed
 
 
 func _physics_process(delta: float) -> void:
@@ -36,6 +44,7 @@ func _physics_process(delta: float) -> void:
 	if velocity.length() > max_speed:
 		velocity = velocity.normalized() * max_speed
 	speed = velocity.length()
+	speed_bar.value = speed
 	move_and_slide()
 	var collision_count = get_slide_collision_count()
 	if collision_count > 0:
@@ -52,4 +61,4 @@ func handle_collisions() -> void:
 			collider.apply_impulse(push_direction * push_force, collision_point - collider.global_position)
 			velocity *= (1.0 - collision_damping)
 			damage += (push_direction * push_force).length() * 0.05
-			print(damage)
+			damage_bar.value = damage
