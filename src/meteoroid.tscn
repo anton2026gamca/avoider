@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqw5f3m8a2bxt"]
+
+[ext_resource type="Script" uid="uid://d1fdkgo7aoulk" path="res://meteoroid.gd" id="1_meteoroid"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_meteoroid"]
+radius = 20.0
+
+[node name="Meteoroid" type="RigidBody2D" groups=["meteoroids"]]
+collision_layer = 2
+collision_mask = 3
+mass = 10.0
+gravity_scale = 0.0
+script = ExtResource("1_meteoroid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_meteoroid")
+
+[node name="Line1" type="Line2D" parent="."]
+points = PackedVector2Array(-20, 3, -2, -19)
+width = 2.0
+
+[node name="Line2" type="Line2D" parent="."]
+points = PackedVector2Array(16, -12, -2, -19)
+width = 2.0
+
+[node name="Line3" type="Line2D" parent="."]
+points = PackedVector2Array(16, 12, 16, -12)
+width = 2.0
+
+[node name="Line4" type="Line2D" parent="."]
+points = PackedVector2Array(-8, 18, 16, 12)
+width = 2.0
+
+[node name="Line5" type="Line2D" parent="."]
+position = Vector2(21, 4)
+points = PackedVector2Array(-29, 14, -41, -1)
+width = 2.0

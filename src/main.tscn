@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://d4cqhy3hqpx56"]
+[gd_scene load_steps=5 format=3 uid="uid://d4cqhy3hqpx56"]
+
+[ext_resource type="Script" uid="uid://bfvcvvvty05pu" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dy7qgl651lmer" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://cmfaxr5jj2rf1" path="res://camera.gd" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cqw5f3m8a2bxt" path="res://meteoroid.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_1bvp3")
+meteoroid_scene = ExtResource("3_h2yge")
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+ignore_rotation = false
+drag_left_margin = 0.69
+drag_top_margin = 0.44
+drag_right_margin = 0.69
+drag_bottom_margin = 0.44
+script = ExtResource("2_0xm2m")
+player = NodePath("../Player")
