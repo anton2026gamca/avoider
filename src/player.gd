@@ -3,9 +3,9 @@ class_name Player
 
 
 @export var thrust: float = 400.0
-@export var max_speed: float = 300.0
+@export var slow_down_rate: float = 400.0
+@export var max_speed: float = 1000.0
 @export var rotation_speed: float = 3.0
-@export var friction: float = 100.0
 @export var collision_damping: float = 0.5
 @export var collision_push_force: float = 0.5
 
@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		acceleration_particles.emitting = false
 	if Input.is_action_pressed("move_down"):
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+		velocity = velocity.move_toward(Vector2.ZERO, slow_down_rate * delta)
 	if velocity.length() > max_speed:
 		velocity = velocity.normalized() * max_speed
 	speed = velocity.length()
@@ -54,11 +54,13 @@ func handle_collisions() -> void:
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		if collider is RigidBody2D:
+		if collider is Meteoroid:
 			var push_direction = collision.get_normal() * -1
 			var push_force = velocity.length() * collision_push_force
 			var collision_point = collision.get_position()
+			var hit_val: float = (push_direction * push_force).length() * 0.05
 			collider.apply_impulse(push_direction * push_force, collision_point - collider.global_position)
-			velocity *= (1.0 - collision_damping)
-			damage += (push_direction * push_force).length() * 0.05
+			collider.damage(hit_val)
+			damage += hit_val
 			damage_bar.value = damage
+			velocity *= (1.0 - collision_damping)

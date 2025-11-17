@@ -16,6 +16,8 @@ speed_bar = NodePath("../UI/MarginContainer/Stats/MarginContainer/VBoxContainer/
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 ignore_rotation = false
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 1.0
 drag_left_margin = 0.69
 drag_top_margin = 0.44
 drag_right_margin = 0.69
