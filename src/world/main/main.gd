@@ -47,9 +47,6 @@ func spawn_meteoroid() -> void:
 	m.angular_velocity = randf_range(-2.0, 2.0)
 	world.add_child(m)
 
-func countdown_play_sound() -> void:
-	print("Countdown")
-
 func countdown_finish() -> void:
 	get_tree().paused = false
 	player.visible = true

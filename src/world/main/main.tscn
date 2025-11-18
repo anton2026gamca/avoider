@@ -1,14 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4cqhy3hqpx56"]
+[gd_scene load_steps=11 format=3 uid="uid://d4cqhy3hqpx56"]
 
 [ext_resource type="Script" uid="uid://bfvcvvvty05pu" path="res://world/main/main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dy7qgl651lmer" path="res://world/player/player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://cmfaxr5jj2rf1" path="res://world/main/camera.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cqw5f3m8a2bxt" path="res://world/meteoroid/meteoroid.tscn" id="3_h2yge"]
 [ext_resource type="Theme" uid="uid://b6sbn7efkckjc" path="res://assets/themes/main.tres" id="5_lquwl"]
+[ext_resource type="AudioStream" uid="uid://dotdwwscbkxjc" path="res://assets/audio/countdown_1.wav" id="6_b0skj"]
+[ext_resource type="AudioStream" uid="uid://dimmmlrw1mbqr" path="res://assets/audio/countdown_2.wav" id="7_qux7x"]
 
 [sub_resource type="Animation" id="Animation_lquwl"]
 resource_name = "Countdown"
-length = 3.2
+length = 3.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -124,20 +126,45 @@ tracks/9/path = NodePath("../..")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.3, 1.3, 2.3, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"countdown_play_sound"
-}, {
-"args": [],
-"method": &"countdown_play_sound"
-}, {
-"args": [],
-"method": &"countdown_play_sound"
-}, {
-"args": [],
 "method": &"countdown_finish"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Countdown")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.3, 1.3, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Start")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
 }]
 }
 
@@ -312,7 +339,7 @@ layout_mode = 0
 offset_left = -25.0
 offset_top = -275.0
 offset_right = 25.0
-offset_bottom = -225.0
+offset_bottom = -224.99997
 scale = Vector2(10, 10)
 pivot_offset = Vector2(25, 25)
 theme = ExtResource("5_lquwl")
@@ -325,3 +352,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_272bh")
 }
 autoplay = "Countdown"
+
+[node name="Countdown" type="AudioStreamPlayer" parent="UI/Countdown"]
+stream = ExtResource("6_b0skj")
+
+[node name="Start" type="AudioStreamPlayer" parent="UI/Countdown"]
+stream = ExtResource("7_qux7x")
