@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://d4cqhy3hqpx56"]
 
-[ext_resource type="Script" uid="uid://bfvcvvvty05pu" path="res://main.gd" id="1_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dy7qgl651lmer" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://cmfaxr5jj2rf1" path="res://camera.gd" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://cqw5f3m8a2bxt" path="res://meteoroid.tscn" id="3_h2yge"]
-[ext_resource type="Theme" uid="uid://b6sbn7efkckjc" path="res://main.tres" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://bfvcvvvty05pu" path="res://world/main/main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dy7qgl651lmer" path="res://world/player/player.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://cmfaxr5jj2rf1" path="res://world/main/camera.gd" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cqw5f3m8a2bxt" path="res://world/meteoroid/meteoroid.tscn" id="3_h2yge"]
+[ext_resource type="Theme" uid="uid://b6sbn7efkckjc" path="res://assets/themes/main.tres" id="5_lquwl"]
 
 [sub_resource type="Animation" id="Animation_lquwl"]
 resource_name = "Countdown"
