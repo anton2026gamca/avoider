@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4cqhy3hqpx56"]
+[gd_scene load_steps=9 format=3 uid="uid://d4cqhy3hqpx56"]
 
 [ext_resource type="Script" uid="uid://bfvcvvvty05pu" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dy7qgl651lmer" path="res://player.tscn" id="1_ig7tw"]
@@ -6,13 +6,197 @@
 [ext_resource type="PackedScene" uid="uid://cqw5f3m8a2bxt" path="res://meteoroid.tscn" id="3_h2yge"]
 [ext_resource type="Theme" uid="uid://b6sbn7efkckjc" path="res://main.tres" id="5_lquwl"]
 
+[sub_resource type="Animation" id="Animation_lquwl"]
+resource_name = "Countdown"
+length = 3.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.9, 1.2),
+"transitions": PackedFloat32Array(2.4622886, 1, 1, 2.1435475, 1),
+"update": 0,
+"values": [Vector2(-25, -275), Vector2(-25, 0), Vector2(-25, -25), Vector2(-25, -25), Vector2(-25, 225)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.32, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(10, 10), Vector2(30, 8), Vector2(10, 10), Vector2(10, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.32, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.2844886680750759, 0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.3, 1.5, 1.9, 2.2),
+"transitions": PackedFloat32Array(2.4622886, 1, 1, 2.1435475, 1),
+"update": 0,
+"values": [Vector2(-25, -275), Vector2(-25, 0), Vector2(-25, -25), Vector2(-25, -25), Vector2(-25, 225)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 1.3, 1.3199999, 1.5, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(10, 10), Vector2(30, 8), Vector2(10, 10), Vector2(10, 10)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 1.3, 1.3199999, 1.5, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.5707226654021456, 0.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Label1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2, 2.3, 2.5, 2.9, 3.2),
+"transitions": PackedFloat32Array(2.4622886, 1, 1, 2.1435475, 1),
+"update": 0,
+"values": [Vector2(-25, -275), Vector2(-25, 0), Vector2(-25, -25), Vector2(-25, -25), Vector2(-25, 225)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Label1:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2, 2.3, 2.32, 2.5, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(10, 10), Vector2(30, 8), Vector2(10, 10), Vector2(10, 10)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Label1:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2, 2.3, 2.32, 2.5, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.28623399732706967, 0.0, 0.0]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../..")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.3, 1.3, 2.3, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"countdown_play_sound"
+}, {
+"args": [],
+"method": &"countdown_play_sound"
+}, {
+"args": [],
+"method": &"countdown_play_sound"
+}, {
+"args": [],
+"method": &"countdown_finish"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7mycd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-25, -25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_272bh"]
+_data = {
+&"Countdown": SubResource("Animation_lquwl"),
+&"RESET": SubResource("Animation_7mycd")
+}
+
 [node name="Main" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_1bvp3")
 meteoroid_scene = ExtResource("3_h2yge")
 
-[node name="Player" parent="." node_paths=PackedStringArray("damage_bar", "speed_bar") instance=ExtResource("1_ig7tw")]
-damage_bar = NodePath("../UI/MarginContainer/Stats/MarginContainer/VBoxContainer/Damage/ProgressBar")
-speed_bar = NodePath("../UI/MarginContainer/Stats/MarginContainer/VBoxContainer/Speed/ProgressBar")
+[node name="World" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="Player" parent="World" node_paths=PackedStringArray("damage_bar", "speed_bar") instance=ExtResource("1_ig7tw")]
+damage_bar = NodePath("../../UI/PlayerUI/Stats/MarginContainer/VBoxContainer/Damage/ProgressBar")
+speed_bar = NodePath("../../UI/PlayerUI/Stats/MarginContainer/VBoxContainer/Speed/ProgressBar")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 ignore_rotation = false
@@ -23,11 +207,11 @@ drag_top_margin = 0.44
 drag_right_margin = 0.69
 drag_bottom_margin = 0.44
 script = ExtResource("2_0xm2m")
-player = NodePath("../Player")
+player = NodePath("../World/Player")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="PlayerUI" type="MarginContainer" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -38,13 +222,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Stats" type="PanelContainer" parent="UI/MarginContainer"]
+[node name="Stats" type="PanelContainer" parent="UI/PlayerUI"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme = ExtResource("5_lquwl")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/Stats"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/PlayerUI/Stats"]
 layout_mode = 2
 theme = ExtResource("5_lquwl")
 theme_override_constants/margin_left = 5
@@ -52,34 +236,92 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/Stats/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayerUI/Stats/MarginContainer"]
 layout_mode = 2
 
-[node name="Damage" type="HBoxContainer" parent="UI/MarginContainer/Stats/MarginContainer/VBoxContainer"]
+[node name="Damage" type="HBoxContainer" parent="UI/PlayerUI/Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/MarginContainer/Stats/MarginContainer/VBoxContainer/Damage"]
+[node name="Label" type="Label" parent="UI/PlayerUI/Stats/MarginContainer/VBoxContainer/Damage"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Damage: "
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/MarginContainer/Stats/MarginContainer/VBoxContainer/Damage"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/PlayerUI/Stats/MarginContainer/VBoxContainer/Damage"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("5_lquwl")
 rounded = true
 
-[node name="Speed" type="HBoxContainer" parent="UI/MarginContainer/Stats/MarginContainer/VBoxContainer"]
+[node name="Speed" type="HBoxContainer" parent="UI/PlayerUI/Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/MarginContainer/Stats/MarginContainer/VBoxContainer/Speed"]
+[node name="Label" type="Label" parent="UI/PlayerUI/Stats/MarginContainer/VBoxContainer/Speed"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Speed: "
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/MarginContainer/Stats/MarginContainer/VBoxContainer/Speed"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/PlayerUI/Stats/MarginContainer/VBoxContainer/Speed"]
 custom_minimum_size = Vector2(100, 9)
 layout_mode = 2
 theme = ExtResource("5_lquwl")
 rounded = true
 show_percentage = false
+
+[node name="Countdown" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label3" type="Label" parent="UI/Countdown"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.000061
+scale = Vector2(10, 10)
+pivot_offset = Vector2(25, 25)
+theme = ExtResource("5_lquwl")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Countdown"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = -25.0
+offset_top = -275.0
+offset_right = 25.0
+offset_bottom = -224.99994
+scale = Vector2(10, 10)
+pivot_offset = Vector2(25, 25)
+theme = ExtResource("5_lquwl")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label1" type="Label" parent="UI/Countdown"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = -25.0
+offset_top = -275.0
+offset_right = 25.0
+offset_bottom = -225.0
+scale = Vector2(10, 10)
+pivot_offset = Vector2(25, 25)
+theme = ExtResource("5_lquwl")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Countdown"]
+libraries = {
+&"": SubResource("AnimationLibrary_272bh")
+}
+autoplay = "Countdown"
