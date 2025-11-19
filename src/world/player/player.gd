@@ -2,18 +2,23 @@ extends CharacterBody2D
 class_name Player
 
 
+@export_group("Movement")
 @export var thrust: float = 400.0
 @export var slow_down_rate: float = 400.0
 @export var max_speed: float = 1000.0
 @export var rotation_speed: float = 3.0
 @export var collision_damping: float = 0.5
 @export var collision_push_force: float = 0.5
+@onready var acceleration_particles: CPUParticles2D = $AccelerationParticles
 
-@export_category("UI")
+@export_group("Shooting")
+@export var bullet_scene: PackedScene
+@onready var bullet_pivot: Node2D = $BulletPivot
+
+@export_group("UI")
 @export var damage_bar: ProgressBar
 @export var speed_bar: ProgressBar
 
-@onready var acceleration_particles: CPUParticles2D = $AccelerationParticles
 
 var damage: float = 0
 var speed: float = 0
@@ -24,6 +29,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	handle_movement(delta)
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
+
+func handle_movement(delta: float) -> void:
 	var turn_dir: float = 0
 	if Input.is_action_pressed("move_left"):
 		turn_dir -= 1
@@ -49,6 +59,16 @@ func _physics_process(delta: float) -> void:
 	var collision_count = get_slide_collision_count()
 	if collision_count > 0:
 		handle_collisions()
+
+func shoot() -> void:
+	var bullet: Node = bullet_scene.instantiate()
+	if bullet is Bullet:
+		bullet.velocity = velocity
+		bullet.global_position = bullet_pivot.global_position
+		bullet.rotation = rotation
+		get_parent().add_child(bullet)
+	else:
+		bullet.queue_free()
 
 func handle_collisions() -> void:
 	for i in range(get_slide_collision_count()):

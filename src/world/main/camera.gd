@@ -5,6 +5,6 @@ class_name Camera
 @export var player: Player
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	position = player.position
 	rotation = player.rotation

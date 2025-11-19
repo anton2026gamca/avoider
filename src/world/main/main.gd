@@ -3,11 +3,11 @@ class_name Main
 
 
 @export var meteoroid_scene: PackedScene
-@export var spawn_interval: float = 0.1  # Time between spawns in seconds
-@export var spawn_distance: float = 600.0  # Distance from player to spawn meteoroids
-@export var min_velocity: float = 25.0  # Minimum initial velocity
-@export var max_velocity: float = 100.0  # Maximum initial velocity
-@export var max_meteoroids: int = 50  # Maximum number of meteoroids at once
+@export var spawn_interval: float = 0.1 
+@export var spawn_distance: float = 600.0
+@export var min_velocity: float = 25.0
+@export var max_velocity: float = 100.0
+@export var max_meteoroids: int = 50
 
 @onready var world: Node2D = $World
 @onready var player: Player = $World/Player
