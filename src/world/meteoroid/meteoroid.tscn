@@ -5,13 +5,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_meteoroid"]
 radius = 20.0
 
-[node name="Meteoroid" type="RigidBody2D" node_paths=PackedStringArray("lines") groups=["meteoroids"]]
+[node name="Meteoroid" type="RigidBody2D" groups=["meteoroids"]]
 collision_layer = 2
 collision_mask = 3
 mass = 10.0
 gravity_scale = 0.0
 script = ExtResource("1_meteoroid")
-lines = [NodePath("Line1"), NodePath("Line2"), NodePath("Line3"), NodePath("Line4"), NodePath("Line5")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_meteoroid")
@@ -33,5 +32,13 @@ points = PackedVector2Array(-8, 18, 16, 12)
 width = 2.0
 
 [node name="Line5" type="Line2D" parent="."]
+points = PackedVector2Array(-8, 18, -20, 3)
+width = 2.0
+
+[node name="Line6" type="Line2D" parent="."]
+points = PackedVector2Array(-8, 18, -20, 3)
+width = 2.0
+
+[node name="Line7" type="Line2D" parent="."]
 points = PackedVector2Array(-8, 18, -20, 3)
 width = 2.0
