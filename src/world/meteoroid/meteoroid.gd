@@ -3,6 +3,7 @@ class_name Meteoroid
 
 
 var health: float = 500
+var radius: float = 0
 
 @onready var lines: Array[Line2D] = [$Line1, $Line2, $Line3, $Line4, $Line5, $Line6, $Line7]
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -11,11 +12,11 @@ var health: float = 500
 @export var random_size_modifier_max: float = 1.3
 
 
-
 func _ready() -> void:
 	if collision_shape.shape is CircleShape2D:
 		collision_shape.shape = collision_shape.shape.duplicate()
 		collision_shape.shape.radius *= randf_range(random_size_modifier_min, random_size_modifier_max)
+		radius = collision_shape.shape.radius
 	var angles: Array[float] = []
 	var radius_modifiers: Array[float] = []
 	var count: int = len(lines)
@@ -35,7 +36,6 @@ func _ready() -> void:
 			radius = collision_shape.shape.radius
 		lines[i].points[0] = Vector2.from_angle(angles[i]) * radius * radius_modifiers[i]
 		lines[i].points[1] = Vector2.from_angle(angles[i + 1]) * radius * radius_modifiers[i + 1]
-		print(angles[i], " -> ", angles[i + 1])
 
 
 func damage(val: float) -> void:

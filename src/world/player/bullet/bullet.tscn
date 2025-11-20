@@ -8,11 +8,11 @@ particle_flag_align_y = true
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 10.0
-initial_velocity_min = 2000.0
-initial_velocity_max = 2000.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
 gravity = Vector3(0, 98, 0)
-linear_accel_min = -5000.0
-linear_accel_max = -5000.0
+linear_accel_min = -3000.0
+linear_accel_max = -3000.0
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 0
@@ -20,9 +20,9 @@ collision_mask = 2
 script = ExtResource("1_fmsnv")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, -57, -300, 0, -317, 57, -300)
+polygon = PackedVector2Array(0, 0, -30, -155, 0, -160, 30, -155)
 
-[node name="CPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 32
 texture = ExtResource("2_6ncfw")

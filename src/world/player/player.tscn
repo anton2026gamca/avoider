@@ -33,4 +33,3 @@ scale_amount_max = 2.0
 texture = ExtResource("2_onrkg")
 
 [node name="BulletPivot" type="Node2D" parent="."]
-position = Vector2(0, -4)
