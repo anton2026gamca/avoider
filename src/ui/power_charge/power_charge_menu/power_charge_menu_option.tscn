@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://iyq52j6q4y68"]
+
+[ext_resource type="Theme" uid="uid://b6sbn7efkckjc" path="res://assets/themes/main.tres" id="1_7v6do"]
+[ext_resource type="Script" uid="uid://bbpcit5fxp8q4" path="res://ui/power_charge/power_charge_menu/power_charge_menu_option.gd" id="1_e4ghj"]
+[ext_resource type="PackedScene" uid="uid://vteiytlbcvc8" path="res://ui/power_charge/power_charge_menu/power_charge.tscn" id="3_7v6do"]
+
+[node name="PowerChargeMenuOption" type="HBoxContainer"]
+script = ExtResource("1_e4ghj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_7v6do")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PowerChargeSlot1" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_7v6do")]
+layout_mode = 2
+
+[node name="PowerChargeSlot2" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_7v6do")]
+layout_mode = 2
+
+[node name="PowerChargeSlot3" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_7v6do")]
+layout_mode = 2
+
+[node name="PowerChargeSlot4" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_7v6do")]
+layout_mode = 2
+
+[node name="PowerChargeSlot5" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_7v6do")]
+layout_mode = 2

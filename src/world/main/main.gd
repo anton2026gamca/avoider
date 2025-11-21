@@ -9,8 +9,8 @@ class_name Main
 @export var max_velocity: float = 100.0
 @export var max_meteoroids: int = 50
 
-@onready var world: Node2D = $World
-@onready var player: Player = $World/Player
+@onready var world: Node2D = %World
+@onready var player: Player = %Player
 @onready var player_ui: MarginContainer = $UI/PlayerUI
 @onready var animation_player: AnimationPlayer = $UI/Countdown/AnimationPlayer
 
@@ -51,3 +51,7 @@ func countdown_finish() -> void:
 	get_tree().paused = false
 	player.visible = true
 	player_ui.visible = true
+
+
+func _on_power_charge_changed(option: String, value: int) -> void:
+	pass # Replace with function body.

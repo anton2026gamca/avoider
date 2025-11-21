@@ -20,7 +20,7 @@ collision_mask = 2
 script = ExtResource("1_fmsnv")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, -30, -155, 0, -160, 30, -155)
+polygon = PackedVector2Array(0, 0, -30, -147, 0, -152, 30, -147)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
@@ -29,6 +29,7 @@ texture = ExtResource("2_6ncfw")
 lifetime = 0.2
 one_shot = true
 explosiveness = 0.9
+visibility_rect = Rect2(0, 0, 0, 0)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_vju8f")
 

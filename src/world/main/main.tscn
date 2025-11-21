@@ -1,12 +1,53 @@
-[gd_scene load_steps=11 format=3 uid="uid://d4cqhy3hqpx56"]
+[gd_scene load_steps=17 format=3 uid="uid://d4cqhy3hqpx56"]
 
 [ext_resource type="Script" uid="uid://bfvcvvvty05pu" path="res://world/main/main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dy7qgl651lmer" path="res://world/player/player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://cmfaxr5jj2rf1" path="res://world/main/camera.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cqw5f3m8a2bxt" path="res://world/meteoroid/meteoroid.tscn" id="3_h2yge"]
 [ext_resource type="Theme" uid="uid://b6sbn7efkckjc" path="res://assets/themes/main.tres" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dobipyixkn2og" path="res://ui/power_charge/power_charge_menu/power_charge_menu.tscn" id="5_qux7x"]
 [ext_resource type="AudioStream" uid="uid://dotdwwscbkxjc" path="res://assets/audio/countdown_1.wav" id="6_b0skj"]
 [ext_resource type="AudioStream" uid="uid://dimmmlrw1mbqr" path="res://assets/audio/countdown_2.wav" id="7_qux7x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qux7x"]
+bg_color = Color(0.14, 0.14, 0.14, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qqmt"]
+bg_color = Color(0.6, 0.6, 0.6, 0.16078432)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06nvy"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h05h"]
+bg_color = Color(0.6, 0.6, 0.6, 0.16078432)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7m80"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+anti_aliasing = false
 
 [sub_resource type="Animation" id="Animation_lquwl"]
 resource_name = "Countdown"
@@ -21,7 +62,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.5, 0.9, 1.2),
 "transitions": PackedFloat32Array(2.4622886, 1, 1, 2.1435475, 1),
 "update": 0,
-"values": [Vector2(-25, -275), Vector2(-25, 0), Vector2(-25, -25), Vector2(-25, -25), Vector2(-25, 225)]
+"values": [Vector2(-250, -1000), Vector2(-250, -225), Vector2(-250, -250), Vector2(-250, -250), Vector2(-250, 500)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -33,7 +74,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.32, 0.5, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(10, 10), Vector2(10, 10), Vector2(30, 8), Vector2(10, 10), Vector2(10, 10)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(3, 0.8), Vector2(1, 1), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -57,7 +98,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(1, 1.3, 1.5, 1.9, 2.2),
 "transitions": PackedFloat32Array(2.4622886, 1, 1, 2.1435475, 1),
 "update": 0,
-"values": [Vector2(-25, -275), Vector2(-25, 0), Vector2(-25, -25), Vector2(-25, -25), Vector2(-25, 225)]
+"values": [Vector2(-250, -1000), Vector2(-250, -225), Vector2(-250, -250), Vector2(-250, -250), Vector2(-250, 500)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -69,7 +110,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(1, 1.3, 1.3199999, 1.5, 1.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(10, 10), Vector2(10, 10), Vector2(30, 8), Vector2(10, 10), Vector2(10, 10)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(3, 0.8), Vector2(1, 1), Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -93,7 +134,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(2, 2.3, 2.5, 2.9, 3.2),
 "transitions": PackedFloat32Array(2.4622886, 1, 1, 2.1435475, 1),
 "update": 0,
-"values": [Vector2(-25, -275), Vector2(-25, 0), Vector2(-25, -25), Vector2(-25, -25), Vector2(-25, 225)]
+"values": [Vector2(-250, -1000), Vector2(-250, -225), Vector2(-250, -250), Vector2(-250, -250), Vector2(-250, 500)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -105,7 +146,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(2, 2.3, 2.32, 2.5, 2.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(10, 10), Vector2(10, 10), Vector2(30, 8), Vector2(10, 10), Vector2(10, 10)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(3, 0.8), Vector2(1, 1), Vector2(1, 1)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -218,14 +259,33 @@ process_mode = 3
 script = ExtResource("1_1bvp3")
 meteoroid_scene = ExtResource("3_h2yge")
 
-[node name="World" type="Node2D" parent="."]
+[node name="World" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="World"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="SubViewport" type="SubViewport" parent="World/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="World" type="Node2D" parent="World/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
 process_mode = 1
 
-[node name="Player" parent="World" node_paths=PackedStringArray("damage_bar", "speed_bar") instance=ExtResource("1_ig7tw")]
-damage_bar = NodePath("../../UI/PlayerUI/Stats/MarginContainer/VBoxContainer/Damage/ProgressBar")
-speed_bar = NodePath("../../UI/PlayerUI/Stats/MarginContainer/VBoxContainer/Speed/ProgressBar")
+[node name="Player" parent="World/SubViewportContainer/SubViewport/World" node_paths=PackedStringArray("damage_bar", "speed_bar") instance=ExtResource("1_ig7tw")]
+unique_name_in_owner = true
+damage_bar = NodePath("../../../../../UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Damage/ProgressBar")
+speed_bar = NodePath("../../../../../UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Speed/ProgressBar")
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+[node name="Camera2D" type="Camera2D" parent="World/SubViewportContainer/SubViewport/World" node_paths=PackedStringArray("player")]
 ignore_rotation = false
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 1.0
@@ -234,7 +294,7 @@ drag_top_margin = 0.44
 drag_right_margin = 0.69
 drag_bottom_margin = 0.44
 script = ExtResource("2_0xm2m")
-player = NodePath("../World/Player")
+player = NodePath("../Player")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -244,54 +304,79 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Stats" type="PanelContainer" parent="UI/PlayerUI"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme = ExtResource("5_lquwl")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/PlayerUI/Stats"]
-layout_mode = 2
-theme = ExtResource("5_lquwl")
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayerUI/Stats/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayerUI"]
+layout_mode = 2
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/PlayerUI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("5_lquwl")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PlayerUI/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PowerChargeMenu" parent="UI/PlayerUI/VBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("5_qux7x")]
 layout_mode = 2
 
-[node name="Damage" type="HBoxContainer" parent="UI/PlayerUI/Stats/MarginContainer/VBoxContainer"]
+[node name="Stats" type="PanelContainer" parent="UI/PlayerUI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("5_lquwl")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qux7x")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PlayerUI/VBoxContainer/Stats"]
+layout_mode = 2
+theme = ExtResource("5_lquwl")
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/PlayerUI/Stats/MarginContainer/VBoxContainer/Damage"]
+[node name="Damage" type="HBoxContainer" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Damage"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Damage: "
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/PlayerUI/Stats/MarginContainer/VBoxContainer/Damage"]
-custom_minimum_size = Vector2(100, 0)
+[node name="ProgressBar" type="ProgressBar" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Damage"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("5_lquwl")
+theme_override_styles/background = SubResource("StyleBoxFlat_7qqmt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_06nvy")
 rounded = true
 
-[node name="Speed" type="HBoxContainer" parent="UI/PlayerUI/Stats/MarginContainer/VBoxContainer"]
+[node name="Speed" type="HBoxContainer" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/PlayerUI/Stats/MarginContainer/VBoxContainer/Speed"]
+[node name="Label" type="Label" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Speed"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Speed: "
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/PlayerUI/Stats/MarginContainer/VBoxContainer/Speed"]
-custom_minimum_size = Vector2(100, 9)
+[node name="ProgressBar" type="ProgressBar" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Speed"]
+custom_minimum_size = Vector2(300, 37)
 layout_mode = 2
 theme = ExtResource("5_lquwl")
+theme_override_styles/background = SubResource("StyleBoxFlat_0h05h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_w7m80")
 rounded = true
 show_percentage = false
 
@@ -306,43 +391,44 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label3" type="Label" parent="UI/Countdown"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 0
 offset_left = -25.0
 offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.000061
+offset_right = 475.0
+offset_bottom = 475.0
 scale = Vector2(10, 10)
-pivot_offset = Vector2(25, 25)
+pivot_offset = Vector2(250, 250)
 theme = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 270
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="UI/Countdown"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 0
-offset_left = -25.0
-offset_top = -275.0
-offset_right = 25.0
-offset_bottom = -224.99994
-scale = Vector2(10, 10)
-pivot_offset = Vector2(25, 25)
+offset_left = -250.0
+offset_top = -1000.0
+offset_right = 250.0
+offset_bottom = -500.0
+pivot_offset = Vector2(250, 250)
 theme = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 270
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label1" type="Label" parent="UI/Countdown"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 0
-offset_left = -25.0
-offset_top = -275.0
-offset_right = 25.0
-offset_bottom = -224.99997
-scale = Vector2(10, 10)
-pivot_offset = Vector2(25, 25)
+offset_left = -250.0
+offset_top = -1000.0
+offset_right = 250.0
+offset_bottom = -499.99994
+pivot_offset = Vector2(250, 250)
 theme = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 270
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -358,3 +444,5 @@ stream = ExtResource("6_b0skj")
 
 [node name="Start" type="AudioStreamPlayer" parent="UI/Countdown"]
 stream = ExtResource("7_qux7x")
+
+[connection signal="changed" from="UI/PlayerUI/VBoxContainer/PanelContainer/MarginContainer/PowerChargeMenu" to="." method="_on_power_charge_changed"]
