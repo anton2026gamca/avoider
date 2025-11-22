@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://iyq52j6q4y68"]
+
+[ext_resource type="Script" uid="uid://bbpcit5fxp8q4" path="res://ui/power_charge/power_charge_menu/power_split_setting.gd" id="1_ly8k4"]
+[ext_resource type="Theme" uid="uid://b6sbn7efkckjc" path="res://assets/themes/main.tres" id="2_j7wlw"]
+
+[node name="PowerSplitSetting" type="HBoxContainer"]
+script = ExtResource("1_ly8k4")
+max_value = null
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_j7wlw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Slider" type="HSlider" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_j7wlw")
+
+[node name="ValueLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "100"
+horizontal_alignment = 2

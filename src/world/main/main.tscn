@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cmfaxr5jj2rf1" path="res://world/main/camera.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cqw5f3m8a2bxt" path="res://world/meteoroid/meteoroid.tscn" id="3_h2yge"]
 [ext_resource type="Theme" uid="uid://b6sbn7efkckjc" path="res://assets/themes/main.tres" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://dobipyixkn2og" path="res://ui/power_charge/power_charge_menu/power_charge_menu.tscn" id="5_qux7x"]
+[ext_resource type="PackedScene" uid="uid://dobipyixkn2og" path="res://ui/power_charge/power_charge_menu/power_split_settings_group.tscn" id="5_qux7x"]
 [ext_resource type="AudioStream" uid="uid://dotdwwscbkxjc" path="res://assets/audio/countdown_1.wav" id="6_b0skj"]
 [ext_resource type="AudioStream" uid="uid://dimmmlrw1mbqr" path="res://assets/audio/countdown_2.wav" id="7_qux7x"]
 
@@ -326,7 +326,7 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="PowerChargeMenu" parent="UI/PlayerUI/VBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("5_qux7x")]
+[node name="PowerSplitSettingsGroup" parent="UI/PlayerUI/VBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("5_qux7x")]
 layout_mode = 2
 
 [node name="Stats" type="PanelContainer" parent="UI/PlayerUI/VBoxContainer"]
@@ -445,4 +445,4 @@ stream = ExtResource("6_b0skj")
 [node name="Start" type="AudioStreamPlayer" parent="UI/Countdown"]
 stream = ExtResource("7_qux7x")
 
-[connection signal="changed" from="UI/PlayerUI/VBoxContainer/PanelContainer/MarginContainer/PowerChargeMenu" to="." method="_on_power_charge_changed"]
+[connection signal="changed" from="UI/PlayerUI/VBoxContainer/PanelContainer/MarginContainer/PowerSplitSettingsGroup" to="." method="_on_power_charge_changed"]
