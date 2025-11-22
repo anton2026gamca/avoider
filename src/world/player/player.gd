@@ -3,10 +3,28 @@ class_name Player
 
 
 @export_group("Movement")
-@export var thrust: float = 400.0
-@export var slow_down_rate: float = 400.0
-@export var max_speed: float = 1000.0
-@export var rotation_speed: float = 3.0
+@export var full_acceleration: float = 400.0
+var acceleration_multiplier: float = 1.0
+var acceleration: float = 400.0:
+	set(value): return
+	get: return full_acceleration * acceleration_multiplier
+
+@export var full_max_speed: float = 1000.0
+var max_speed_multiplier: float = 1.0:
+	set(value):
+		max_speed_multiplier = value
+		speed_bar.max_value = max_speed
+	get: return max_speed_multiplier
+var max_speed: float = 1000.0:
+	set(value): return
+	get: return full_max_speed * max_speed_multiplier
+
+@export var full_rotation_speed: float = 3.0
+var rotation_speed_multiplier: float = 1.0
+var rotation_speed: float = 3.0:
+	set(value): return
+	get: return full_rotation_speed * rotation_speed_multiplier
+
 @export var collision_damping: float = 0.5
 @export var collision_push_force: float = 0.5
 @onready var acceleration_particles: CPUParticles2D = $AccelerationParticles
@@ -27,11 +45,11 @@ var speed: float = 0
 func _ready() -> void:
 	speed_bar.max_value = max_speed
 
-
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+
 
 func handle_movement(delta: float) -> void:
 	var turn_dir: float = 0
@@ -41,16 +59,13 @@ func handle_movement(delta: float) -> void:
 		turn_dir += 1
 	rotation += turn_dir * rotation_speed * delta
 	
-	var accel: float = 0
 	if Input.is_action_pressed("move_up"):
-		accel += thrust
-	if accel != 0:
-		velocity += Vector2.UP.rotated(rotation) * accel * delta
+		velocity += Vector2.UP.rotated(rotation) * acceleration * delta
 		acceleration_particles.emitting = true
 	else:
 		acceleration_particles.emitting = false
 	if Input.is_action_pressed("move_down"):
-		velocity = velocity.move_toward(Vector2.ZERO, slow_down_rate * delta)
+		velocity = velocity.move_toward(Vector2.ZERO, acceleration * delta)
 	if velocity.length() > max_speed:
 		velocity = velocity.normalized() * max_speed
 	speed = velocity.length()

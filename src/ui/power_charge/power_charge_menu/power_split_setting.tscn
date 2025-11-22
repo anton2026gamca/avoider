@@ -32,5 +32,16 @@ unique_name_in_owner = true
 clip_contents = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme = ExtResource("2_j7wlw")
 text = "100"
-horizontal_alignment = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ValueLabel2" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+theme = ExtResource("2_j7wlw")
+text = "%"
+horizontal_alignment = 1
+vertical_alignment = 1

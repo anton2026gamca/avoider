@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d4cqhy3hqpx56"]
+[gd_scene load_steps=21 format=3 uid="uid://d4cqhy3hqpx56"]
 
 [ext_resource type="Script" uid="uid://bfvcvvvty05pu" path="res://world/main/main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dy7qgl651lmer" path="res://world/player/player.tscn" id="1_ig7tw"]
@@ -7,7 +7,29 @@
 [ext_resource type="Theme" uid="uid://b6sbn7efkckjc" path="res://assets/themes/main.tres" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dobipyixkn2og" path="res://ui/power_charge/power_charge_menu/power_split_settings_group.tscn" id="5_qux7x"]
 [ext_resource type="AudioStream" uid="uid://dotdwwscbkxjc" path="res://assets/audio/countdown_1.wav" id="6_b0skj"]
+[ext_resource type="Script" uid="uid://b1iyuntwrd4b7" path="res://ui/power_charge/power_charge_menu/power_split_setting_data.gd" id="7_7qqmt"]
 [ext_resource type="AudioStream" uid="uid://dimmmlrw1mbqr" path="res://assets/audio/countdown_2.wav" id="7_qux7x"]
+
+[sub_resource type="Resource" id="Resource_0h05h"]
+script = ExtResource("7_7qqmt")
+label = "Acceleration"
+max_value = 150.0
+default_value = 100.0
+metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
+
+[sub_resource type="Resource" id="Resource_06nvy"]
+script = ExtResource("7_7qqmt")
+label = "Max Speed"
+max_value = 150.0
+default_value = 100.0
+metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
+
+[sub_resource type="Resource" id="Resource_w7m80"]
+script = ExtResource("7_7qqmt")
+label = "Rotation Speed"
+max_value = 150.0
+default_value = 100.0
+metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qux7x"]
 bg_color = Color(0.14, 0.14, 0.14, 1)
@@ -328,6 +350,7 @@ theme_override_constants/margin_bottom = 5
 
 [node name="PowerSplitSettingsGroup" parent="UI/PlayerUI/VBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("5_qux7x")]
 layout_mode = 2
+options = Array[ExtResource("7_7qqmt")]([SubResource("Resource_0h05h"), SubResource("Resource_06nvy"), SubResource("Resource_w7m80")])
 
 [node name="Stats" type="PanelContainer" parent="UI/PlayerUI/VBoxContainer"]
 layout_mode = 2
@@ -445,4 +468,4 @@ stream = ExtResource("6_b0skj")
 [node name="Start" type="AudioStreamPlayer" parent="UI/Countdown"]
 stream = ExtResource("7_qux7x")
 
-[connection signal="changed" from="UI/PlayerUI/VBoxContainer/PanelContainer/MarginContainer/PowerSplitSettingsGroup" to="." method="_on_power_charge_changed"]
+[connection signal="changed" from="UI/PlayerUI/VBoxContainer/PanelContainer/MarginContainer/PowerSplitSettingsGroup" to="." method="_on_power_split_changed" binds= ["Player"]]

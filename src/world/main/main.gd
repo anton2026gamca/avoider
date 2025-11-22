@@ -12,7 +12,9 @@ class_name Main
 @onready var world: Node2D = %World
 @onready var player: Player = %Player
 @onready var player_ui: MarginContainer = $UI/PlayerUI
+@onready var player_ui_speed_bar: ProgressBar = $UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Speed/ProgressBar
 @onready var animation_player: AnimationPlayer = $UI/Countdown/AnimationPlayer
+@onready var player_power_split_group: PowerSplitSettingsGroup = $UI/PlayerUI/VBoxContainer/PanelContainer/MarginContainer/PowerSplitSettingsGroup
 
 var spawn_timer: float = 0.0
 
@@ -53,5 +55,8 @@ func countdown_finish() -> void:
 	player_ui.visible = true
 
 
-func _on_power_charge_changed(option: String, value: int) -> void:
-	pass # Replace with function body.
+func _on_power_split_changed(values: Dictionary[String, float], group: String) -> void:
+	if group == "Player" and player:
+		player.acceleration_multiplier = values.get("Acceleration", 1.0)
+		player.max_speed_multiplier = values.get("Max Speed", 1.0)
+		player.rotation_speed_multiplier = values.get("Rotation Speed", 1.0)

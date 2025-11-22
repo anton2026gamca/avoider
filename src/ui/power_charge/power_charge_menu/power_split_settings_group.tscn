@@ -7,19 +7,22 @@
 [sub_resource type="Resource" id="Resource_0h05h"]
 script = ExtResource("2_l0x1s")
 label = "Acceleration"
-default_value = 33.0
+max_value = 150.0
+default_value = 100.0
 metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
 
 [sub_resource type="Resource" id="Resource_06nvy"]
 script = ExtResource("2_l0x1s")
 label = "Max Speed"
-default_value = 33.0
+max_value = 150.0
+default_value = 100.0
 metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
 
 [sub_resource type="Resource" id="Resource_6bw3a"]
 script = ExtResource("2_l0x1s")
 label = "Rotation Speed"
-default_value = 33.0
+max_value = 150.0
+default_value = 100.0
 metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
 
 [node name="PowerSplitSettingsGroup" type="VBoxContainer"]
