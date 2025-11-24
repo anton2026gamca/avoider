@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d4cqhy3hqpx56"]
+[gd_scene load_steps=23 format=3 uid="uid://d4cqhy3hqpx56"]
 
 [ext_resource type="Script" uid="uid://bfvcvvvty05pu" path="res://world/main/main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dy7qgl651lmer" path="res://world/player/player.tscn" id="1_ig7tw"]
@@ -10,29 +10,24 @@
 [ext_resource type="Script" uid="uid://b1iyuntwrd4b7" path="res://ui/power_charge/power_charge_menu/power_split_setting_data.gd" id="7_7qqmt"]
 [ext_resource type="AudioStream" uid="uid://dimmmlrw1mbqr" path="res://assets/audio/countdown_2.wav" id="7_qux7x"]
 
-[sub_resource type="Resource" id="Resource_0h05h"]
-script = ExtResource("7_7qqmt")
-label = "Acceleration"
-max_value = 150.0
-default_value = 100.0
-metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
-
-[sub_resource type="Resource" id="Resource_06nvy"]
-script = ExtResource("7_7qqmt")
-label = "Max Speed"
-max_value = 150.0
-default_value = 100.0
-metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
-
-[sub_resource type="Resource" id="Resource_w7m80"]
-script = ExtResource("7_7qqmt")
-label = "Rotation Speed"
-max_value = 150.0
-default_value = 100.0
-metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qux7x"]
 bg_color = Color(0.14, 0.14, 0.14, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h05h"]
+bg_color = Color(0.6, 0.6, 0.6, 0.16078432)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7m80"]
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
@@ -55,21 +50,40 @@ corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h05h"]
-bg_color = Color(0.6, 0.6, 0.6, 0.16078432)
-corner_radius_top_left = 24
-corner_radius_top_right = 24
-corner_radius_bottom_right = 24
-corner_radius_bottom_left = 24
-anti_aliasing = false
+[sub_resource type="Resource" id="Resource_7qqmt"]
+script = ExtResource("7_7qqmt")
+label = "Capacity"
+max_value = 200.0
+default_value = 100.0
+metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7m80"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 24
-corner_radius_top_right = 24
-corner_radius_bottom_right = 24
-corner_radius_bottom_left = 24
-anti_aliasing = false
+[sub_resource type="Resource" id="Resource_76jog"]
+script = ExtResource("7_7qqmt")
+label = "Recharge"
+max_value = 200.0
+default_value = 100.0
+metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
+
+[sub_resource type="Resource" id="Resource_0h05h"]
+script = ExtResource("7_7qqmt")
+label = "Acceleration"
+max_value = 150.0
+default_value = 100.0
+metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
+
+[sub_resource type="Resource" id="Resource_06nvy"]
+script = ExtResource("7_7qqmt")
+label = "Max Speed"
+max_value = 150.0
+default_value = 100.0
+metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
+
+[sub_resource type="Resource" id="Resource_w7m80"]
+script = ExtResource("7_7qqmt")
+label = "Rotation Speed"
+max_value = 150.0
+default_value = 100.0
+metadata/_custom_type_script = "uid://b1iyuntwrd4b7"
 
 [sub_resource type="Animation" id="Animation_lquwl"]
 resource_name = "Countdown"
@@ -302,10 +316,11 @@ render_target_update_mode = 4
 unique_name_in_owner = true
 process_mode = 1
 
-[node name="Player" parent="World/SubViewportContainer/SubViewport/World" node_paths=PackedStringArray("damage_bar", "speed_bar") instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="World/SubViewportContainer/SubViewport/World" node_paths=PackedStringArray("shields_bar", "damage_bar", "speed_bar") instance=ExtResource("1_ig7tw")]
 unique_name_in_owner = true
-damage_bar = NodePath("../../../../../UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Damage/ProgressBar")
-speed_bar = NodePath("../../../../../UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Speed/ProgressBar")
+shields_bar = NodePath("../../../../../UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer/VBoxContainer/Shields/ShieldsBar")
+damage_bar = NodePath("../../../../../UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer/VBoxContainer/Damage/DamageBar")
+speed_bar = NodePath("../../../../../UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer/VBoxContainer/Speed/SpeedBar")
 
 [node name="Camera2D" type="Camera2D" parent="World/SubViewportContainer/SubViewport/World" node_paths=PackedStringArray("player")]
 ignore_rotation = false
@@ -321,45 +336,33 @@ player = NodePath("../Player")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="PlayerUI" type="MarginContainer" parent="UI"]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayerUI"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/PlayerUI"]
 layout_mode = 2
+
+[node name="Left" type="VBoxContainer" parent="UI/PlayerUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 alignment = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/PlayerUI/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme = ExtResource("5_lquwl")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/PlayerUI/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="PowerSplitSettingsGroup" parent="UI/PlayerUI/VBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("5_qux7x")]
-layout_mode = 2
-options = Array[ExtResource("7_7qqmt")]([SubResource("Resource_0h05h"), SubResource("Resource_06nvy"), SubResource("Resource_w7m80")])
-
-[node name="Stats" type="PanelContainer" parent="UI/PlayerUI/VBoxContainer"]
+[node name="Stats" type="PanelContainer" parent="UI/PlayerUI/HBoxContainer/Left"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = ExtResource("5_lquwl")
 theme_override_styles/panel = SubResource("StyleBoxFlat_qux7x")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/PlayerUI/VBoxContainer/Stats"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/PlayerUI/HBoxContainer/Left/Stats"]
 layout_mode = 2
 theme = ExtResource("5_lquwl")
 theme_override_constants/margin_left = 15
@@ -367,18 +370,34 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer"]
 layout_mode = 2
 
-[node name="Damage" type="HBoxContainer" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer"]
+[node name="Shields" type="HBoxContainer" parent="UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Damage"]
+[node name="Label" type="Label" parent="UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer/VBoxContainer/Shields"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shields:"
+
+[node name="ShieldsBar" type="ProgressBar" parent="UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer/VBoxContainer/Shields"]
+custom_minimum_size = Vector2(300, 37)
+layout_mode = 2
+theme = ExtResource("5_lquwl")
+theme_override_styles/background = SubResource("StyleBoxFlat_0h05h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_w7m80")
+rounded = true
+
+[node name="Damage" type="HBoxContainer" parent="UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer/VBoxContainer/Damage"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Damage: "
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Damage"]
+[node name="DamageBar" type="ProgressBar" parent="UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer/VBoxContainer/Damage"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("5_lquwl")
@@ -386,22 +405,63 @@ theme_override_styles/background = SubResource("StyleBoxFlat_7qqmt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_06nvy")
 rounded = true
 
-[node name="Speed" type="HBoxContainer" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer"]
+[node name="Speed" type="HBoxContainer" parent="UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Speed"]
+[node name="Label" type="Label" parent="UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer/VBoxContainer/Speed"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Speed: "
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/PlayerUI/VBoxContainer/Stats/MarginContainer/VBoxContainer/Speed"]
+[node name="SpeedBar" type="ProgressBar" parent="UI/PlayerUI/HBoxContainer/Left/Stats/MarginContainer/VBoxContainer/Speed"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 37)
 layout_mode = 2
 theme = ExtResource("5_lquwl")
 theme_override_styles/background = SubResource("StyleBoxFlat_0h05h")
 theme_override_styles/fill = SubResource("StyleBoxFlat_w7m80")
 rounded = true
-show_percentage = false
+
+[node name="Right" type="VBoxContainer" parent="UI/PlayerUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("5_lquwl")
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="Shields" type="PanelContainer" parent="UI/PlayerUI/HBoxContainer/Right"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("5_lquwl")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PlayerUI/HBoxContainer/Right/Shields"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PowerSplitSettingsGroup" parent="UI/PlayerUI/HBoxContainer/Right/Shields/MarginContainer" instance=ExtResource("5_qux7x")]
+layout_mode = 2
+label = "Shields"
+options = Array[ExtResource("7_7qqmt")]([SubResource("Resource_7qqmt"), SubResource("Resource_76jog")])
+
+[node name="Movement" type="PanelContainer" parent="UI/PlayerUI/HBoxContainer/Right"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("5_lquwl")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PlayerUI/HBoxContainer/Right/Movement"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PowerSplitSettingsGroup" parent="UI/PlayerUI/HBoxContainer/Right/Movement/MarginContainer" instance=ExtResource("5_qux7x")]
+layout_mode = 2
+label = "Movement"
+options = Array[ExtResource("7_7qqmt")]([SubResource("Resource_0h05h"), SubResource("Resource_06nvy"), SubResource("Resource_w7m80")])
 
 [node name="Countdown" type="Control" parent="UI"]
 layout_mode = 3
@@ -448,7 +508,7 @@ layout_mode = 0
 offset_left = -250.0
 offset_top = -1000.0
 offset_right = 250.0
-offset_bottom = -499.99994
+offset_bottom = -499.99982
 pivot_offset = Vector2(250, 250)
 theme = ExtResource("5_lquwl")
 theme_override_font_sizes/font_size = 270
@@ -468,4 +528,5 @@ stream = ExtResource("6_b0skj")
 [node name="Start" type="AudioStreamPlayer" parent="UI/Countdown"]
 stream = ExtResource("7_qux7x")
 
-[connection signal="changed" from="UI/PlayerUI/VBoxContainer/PanelContainer/MarginContainer/PowerSplitSettingsGroup" to="." method="_on_power_split_changed" binds= ["Player"]]
+[connection signal="changed" from="UI/PlayerUI/HBoxContainer/Right/Shields/MarginContainer/PowerSplitSettingsGroup" to="." method="_on_power_split_changed" binds= ["Shields"]]
+[connection signal="changed" from="UI/PlayerUI/HBoxContainer/Right/Movement/MarginContainer/PowerSplitSettingsGroup" to="." method="_on_power_split_changed" binds= ["Movement"]]

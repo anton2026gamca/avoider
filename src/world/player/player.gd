@@ -3,13 +3,13 @@ class_name Player
 
 
 @export_group("Movement")
-@export var full_acceleration: float = 400.0
+@export var _acceleration: float = 400.0
 var acceleration_multiplier: float = 1.0
 var acceleration: float = 400.0:
 	set(value): return
-	get: return full_acceleration * acceleration_multiplier
+	get: return _acceleration * acceleration_multiplier
 
-@export var full_max_speed: float = 1000.0
+@export var _max_speed: float = 1000.0
 var max_speed_multiplier: float = 1.0:
 	set(value):
 		max_speed_multiplier = value
@@ -17,13 +17,13 @@ var max_speed_multiplier: float = 1.0:
 	get: return max_speed_multiplier
 var max_speed: float = 1000.0:
 	set(value): return
-	get: return full_max_speed * max_speed_multiplier
+	get: return _max_speed * max_speed_multiplier
 
-@export var full_rotation_speed: float = 3.0
+@export var _rotation_speed: float = 3.0
 var rotation_speed_multiplier: float = 1.0
 var rotation_speed: float = 3.0:
 	set(value): return
-	get: return full_rotation_speed * rotation_speed_multiplier
+	get: return _rotation_speed * rotation_speed_multiplier
 
 @export var collision_damping: float = 0.5
 @export var collision_push_force: float = 0.5
@@ -33,7 +33,28 @@ var rotation_speed: float = 3.0:
 @export var bullet_scene: PackedScene
 @onready var bullet_pivot: Node2D = $BulletPivot
 
+@export_group("Shields")
+@export var _shields_capacity: float = 100
+var shields_capacity_multiplier: float = 1.0:
+	set(value):
+		shields_capacity_multiplier = value
+		if shields_bar:
+			shields_bar.max_value = shields_capacity
+	get: return shields_capacity_multiplier
+var shields_capacity: float = 3.0:
+	set(value): return
+	get: return _shields_capacity * shields_capacity_multiplier
+
+@export var _shields_recharge_rate: float = 5.0
+var shields_recharge_rate_multiplier: float = 1.0
+var shields_recharge_rate: float = 3.0:
+	set(value): return
+	get: return _shields_recharge_rate * shields_recharge_rate_multiplier
+
+var shields_value: float = 0
+
 @export_group("UI")
+@export var shields_bar: ProgressBar
 @export var damage_bar: ProgressBar
 @export var speed_bar: ProgressBar
 
@@ -44,11 +65,14 @@ var speed: float = 0
 
 func _ready() -> void:
 	speed_bar.max_value = max_speed
+	shields_bar.max_value = shields_capacity
 
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	shields_value = min(shields_value + shields_recharge_rate * delta, shields_capacity)
+	shields_bar.value = shields_value
 
 
 func handle_movement(delta: float) -> void:
@@ -85,6 +109,13 @@ func shoot() -> void:
 	else:
 		bullet.queue_free()
 
+func take_damage(value: float) -> void:
+	shields_value -= value
+	if shields_value < 0:
+		damage += abs(shields_value)
+		damage_bar.value = damage
+		shields_value = 0
+
 func handle_collisions() -> void:
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
@@ -96,6 +127,5 @@ func handle_collisions() -> void:
 			var hit_val: float = (push_direction * push_force).length() * 0.05
 			collider.apply_impulse(push_direction * push_force, collision_point - collider.global_position)
 			collider.damage(hit_val)
-			damage += hit_val
-			damage_bar.value = damage
+			take_damage(hit_val)
 			velocity *= (1.0 - collision_damping)
