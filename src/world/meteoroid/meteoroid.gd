@@ -11,6 +11,8 @@ var radius: float = 0
 @export var random_size_multiplier_min: float = 0.8
 @export var random_size_multiplier_max: float = 1.3
 
+signal destroyed
+
 
 func _ready() -> void:
 	if collision_shape.shape is CircleShape2D:
@@ -44,12 +46,14 @@ func destroy() -> void:
 	if collision_layer == 0:
 		return
 	collision_layer = 0
+	collision_mask = 0
 	angular_velocity = 0
 	for line: Line2D in lines:
 		var tween: Tween = get_tree().create_tween()
 		tween.tween_property(line, "position", line.position + Vector2(randi_range(-75, 75), randi_range(-75, 75)), 0.5)
 		tween.set_parallel()
 		tween.tween_property(line, "rotation", line.rotation + deg_to_rad(randf_range(-90, 90)), 0.5)
+	destroyed.emit()
 	await get_tree().create_timer(0.5, false).timeout
 	get_parent().remove_child(self)
 	queue_free()

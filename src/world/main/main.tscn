@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d4cqhy3hqpx56"]
+[gd_scene load_steps=27 format=3 uid="uid://d4cqhy3hqpx56"]
 
 [ext_resource type="Script" uid="uid://bfvcvvvty05pu" path="res://world/main/main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dy7qgl651lmer" path="res://world/player/player.tscn" id="1_ig7tw"]
@@ -9,6 +9,132 @@
 [ext_resource type="AudioStream" uid="uid://dotdwwscbkxjc" path="res://assets/audio/countdown_1.wav" id="6_b0skj"]
 [ext_resource type="Script" uid="uid://b1iyuntwrd4b7" path="res://ui/power_split_menu/power_split_setting_data.gd" id="7_7qqmt"]
 [ext_resource type="AudioStream" uid="uid://dimmmlrw1mbqr" path="res://assets/audio/countdown_2.wav" id="7_qux7x"]
+
+[sub_resource type="Animation" id="Animation_7qqmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScoreParent/ScoreLabel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScoreParent/ScoreLabel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ScoreParent/ScoreLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-230, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0h05h"]
+resource_name = "Add1"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScoreParent/ScoreLabel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.19999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.15358897417550119, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScoreParent/ScoreLabel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.19999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 0.8), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ScoreParent/ScoreLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-230, 0), Vector2(-230, 50), Vector2(-230, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_06nvy"]
+resource_name = "Add2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScoreParent/ScoreLabel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.19999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.20943951023931956, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScoreParent/ScoreLabel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.19999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.8, 0.6), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ScoreParent/ScoreLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-230, 0), Vector2(-230, 75), Vector2(-230, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w7m80"]
+_data = {
+&"Add1": SubResource("Animation_0h05h"),
+&"Add2": SubResource("Animation_06nvy"),
+&"RESET": SubResource("Animation_7qqmt")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qux7x"]
 bg_color = Color(0.14, 0.14, 0.14, 1)
@@ -346,6 +472,42 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+
+[node name="Control" type="Control" parent="UI/PlayerUI"]
+layout_mode = 2
+
+[node name="ScoreParent" type="Control" parent="UI/PlayerUI/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = -20.0
+grow_horizontal = 2
+
+[node name="ScoreLabel" type="Label" parent="UI/PlayerUI/Control/ScoreParent"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -230.0
+offset_right = 270.0
+offset_bottom = 74.000046
+grow_horizontal = 2
+pivot_offset = Vector2(250, 0)
+theme = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 54
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreAnimationPlayer" type="AnimationPlayer" parent="UI/PlayerUI/Control/ScoreParent/ScoreLabel"]
+unique_name_in_owner = true
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_w7m80")
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/PlayerUI"]
 layout_mode = 2
