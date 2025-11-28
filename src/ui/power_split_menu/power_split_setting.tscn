@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://iyq52j6q4y68"]
 
-[ext_resource type="Script" uid="uid://bbpcit5fxp8q4" path="res://ui/power_charge/power_charge_menu/power_split_setting.gd" id="1_ly8k4"]
+[ext_resource type="Script" uid="uid://bbpcit5fxp8q4" path="res://ui/power_split_menu/power_split_setting.gd" id="1_ly8k4"]
 [ext_resource type="Theme" uid="uid://b6sbn7efkckjc" path="res://assets/themes/main.tres" id="2_j7wlw"]
 
 [node name="PowerSplitSetting" type="HBoxContainer"]

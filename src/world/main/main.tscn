@@ -5,9 +5,9 @@
 [ext_resource type="Script" uid="uid://cmfaxr5jj2rf1" path="res://world/main/camera.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cqw5f3m8a2bxt" path="res://world/meteoroid/meteoroid.tscn" id="3_h2yge"]
 [ext_resource type="Theme" uid="uid://b6sbn7efkckjc" path="res://assets/themes/main.tres" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://dobipyixkn2og" path="res://ui/power_charge/power_charge_menu/power_split_settings_group.tscn" id="5_qux7x"]
+[ext_resource type="PackedScene" uid="uid://dobipyixkn2og" path="res://ui/power_split_menu/power_split_settings_group.tscn" id="5_qux7x"]
 [ext_resource type="AudioStream" uid="uid://dotdwwscbkxjc" path="res://assets/audio/countdown_1.wav" id="6_b0skj"]
-[ext_resource type="Script" uid="uid://b1iyuntwrd4b7" path="res://ui/power_charge/power_charge_menu/power_split_setting_data.gd" id="7_7qqmt"]
+[ext_resource type="Script" uid="uid://b1iyuntwrd4b7" path="res://ui/power_split_menu/power_split_setting_data.gd" id="7_7qqmt"]
 [ext_resource type="AudioStream" uid="uid://dimmmlrw1mbqr" path="res://assets/audio/countdown_2.wav" id="7_qux7x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qux7x"]

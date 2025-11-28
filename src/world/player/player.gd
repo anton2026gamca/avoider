@@ -34,7 +34,7 @@ var rotation_speed: float = 3.0:
 @onready var bullet_pivot: Node2D = $BulletPivot
 
 @export_group("Shields")
-@export var _shields_capacity: float = 100
+@export var _shields_capacity: float = 20
 var shields_capacity_multiplier: float = 1.0:
 	set(value):
 		shields_capacity_multiplier = value

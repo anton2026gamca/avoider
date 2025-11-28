@@ -8,14 +8,14 @@ var radius: float = 0
 @onready var lines: Array[Line2D] = [$Line1, $Line2, $Line3, $Line4, $Line5, $Line6, $Line7]
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
-@export var random_size_modifier_min: float = 0.8
-@export var random_size_modifier_max: float = 1.3
+@export var random_size_multiplier_min: float = 0.8
+@export var random_size_multiplier_max: float = 1.3
 
 
 func _ready() -> void:
 	if collision_shape.shape is CircleShape2D:
 		collision_shape.shape = collision_shape.shape.duplicate()
-		collision_shape.shape.radius *= randf_range(random_size_modifier_min, random_size_modifier_max)
+		collision_shape.shape.radius *= randf_range(random_size_multiplier_min, random_size_multiplier_max)
 		radius = collision_shape.shape.radius
 	var angles: Array[float] = []
 	var radius_modifiers: Array[float] = []
@@ -31,9 +31,6 @@ func _ready() -> void:
 	angles.append(0)
 	radius_modifiers.append(1)
 	for i: float in count:
-		var radius: float = 1
-		if collision_shape.shape is CircleShape2D:
-			radius = collision_shape.shape.radius
 		lines[i].points[0] = Vector2.from_angle(angles[i]) * radius * radius_modifiers[i]
 		lines[i].points[1] = Vector2.from_angle(angles[i + 1]) * radius * radius_modifiers[i + 1]
 
