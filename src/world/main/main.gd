@@ -18,6 +18,9 @@ class_name Main
 @onready var score_label: Label = %ScoreLabel
 @onready var score_animation_player: AnimationPlayer = %ScoreAnimationPlayer
 
+@onready var game_over_menu: Control = $UI/GameOverMenu
+@onready var game_over_menu_animation_player: AnimationPlayer = $UI/GameOverMenu/AnimationPlayer
+
 var spawn_timer: float = 0.0
 
 var score: int = 0:
@@ -35,6 +38,8 @@ func _ready() -> void:
 	player.visible = false
 	player_ui.visible = false
 	score_label.text = "0"
+	game_over_menu.visible = false
+	player.died.connect(game_over)
 
 func _process(delta: float) -> void:
 	spawn_timer += delta
@@ -78,3 +83,18 @@ func _on_power_split_changed(values: Dictionary[String, float], group: String) -
 
 func _on_meteoroid_destroyed() -> void:
 	score += 50
+
+func game_over() -> void:
+	game_over_menu.visible = true
+	game_over_menu_animation_player.play("open")
+	player_ui.visible = false
+
+func _on_game_over_menu_restart_pressed() -> void:
+	if game_over_menu_animation_player.is_playing():
+		return
+	game_over_menu_animation_player.play("close")
+	await game_over_menu_animation_player.animation_finished
+	restart()
+
+func restart() -> void:
+	get_tree().reload_current_scene()

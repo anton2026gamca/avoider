@@ -58,9 +58,14 @@ var shields_value: float = 0
 @export var damage_bar: ProgressBar
 @export var speed_bar: ProgressBar
 
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var death_particles: CPUParticles2D = $DeathParticles
 
 var damage: float = 0
+var is_dead: bool = false
 var speed: float = 0
+
+signal died
 
 
 func _ready() -> void:
@@ -69,26 +74,32 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
-	if Input.is_action_just_pressed("shoot"):
+	if is_action_just_pressed("shoot"):
 		shoot()
 	shields_value = min(shields_value + shields_recharge_rate * delta, shields_capacity)
 	shields_bar.value = shields_value
 
 
+func is_action_pressed(action_name: String) -> bool:
+	return Input.is_action_pressed(action_name) and not is_dead
+
+func is_action_just_pressed(action_name: String) -> bool:
+	return Input.is_action_just_pressed(action_name) and not is_dead
+
 func handle_movement(delta: float) -> void:
 	var turn_dir: float = 0
-	if Input.is_action_pressed("move_left"):
+	if is_action_pressed("move_left"):
 		turn_dir -= 1
-	if Input.is_action_pressed("move_right"):
+	if is_action_pressed("move_right"):
 		turn_dir += 1
 	rotation += turn_dir * rotation_speed * delta
 	
-	if Input.is_action_pressed("move_up"):
+	if is_action_pressed("move_up"):
 		velocity += Vector2.UP.rotated(rotation) * acceleration * delta
 		acceleration_particles.emitting = true
 	else:
 		acceleration_particles.emitting = false
-	if Input.is_action_pressed("move_down"):
+	if is_action_pressed("move_down"):
 		velocity = velocity.move_toward(Vector2.ZERO, acceleration * delta)
 	if velocity.length() > max_speed:
 		velocity = velocity.normalized() * max_speed
@@ -115,6 +126,16 @@ func take_damage(value: float) -> void:
 		damage += abs(shields_value)
 		damage_bar.value = damage
 		shields_value = 0
+	if damage >= 100:
+		die()
+
+func die() -> void:
+	death_particles.restart()
+	sprite.visible = false
+	collision_layer = 0
+	collision_mask = 0
+	is_dead = true
+	died.emit()
 
 func handle_collisions() -> void:
 	for i in range(get_slide_collision_count()):
