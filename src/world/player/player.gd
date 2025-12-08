@@ -60,6 +60,9 @@ var shields_value: float = 0
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var death_particles: CPUParticles2D = $DeathParticles
+@onready var accelerate_audio: EngineSound = $AccelerateAudio
+@onready var die_audio: AudioStreamPlayer = $DieAudio
+@onready var collide_audio: AudioStreamPlayer = $CollideAudio
 
 var damage: float = 0
 var is_dead: bool = false
@@ -97,8 +100,10 @@ func handle_movement(delta: float) -> void:
 	if is_action_pressed("move_up"):
 		velocity += Vector2.UP.rotated(rotation) * acceleration * delta
 		acceleration_particles.emitting = true
+		accelerate_audio.pitch_scale = min(accelerate_audio.pitch_scale + 5.0 * delta, 1.0 * acceleration_multiplier * velocity.length() / max_speed)
 	else:
 		acceleration_particles.emitting = false
+		accelerate_audio.pitch_scale = max(accelerate_audio.pitch_scale - 0.5 * delta, 0.01)
 	if is_action_pressed("move_down"):
 		velocity = velocity.move_toward(Vector2.ZERO, acceleration * delta)
 	if velocity.length() > max_speed:
@@ -135,6 +140,7 @@ func die() -> void:
 	collision_layer = 0
 	collision_mask = 0
 	is_dead = true
+	die_audio.play()
 	died.emit()
 
 func handle_collisions() -> void:
@@ -149,4 +155,6 @@ func handle_collisions() -> void:
 			collider.apply_impulse(push_direction * push_force, collision_point - collider.global_position)
 			collider.damage(hit_val)
 			take_damage(hit_val)
+			collide_audio.pitch_scale = hit_val / 40.0
+			collide_audio.play()
 			velocity *= (1.0 - collision_damping)

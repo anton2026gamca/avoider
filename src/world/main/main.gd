@@ -21,6 +21,8 @@ class_name Main
 @onready var game_over_menu: Control = $UI/GameOverMenu
 @onready var game_over_menu_animation_player: AnimationPlayer = $UI/GameOverMenu/AnimationPlayer
 
+@onready var get_points_audio: AudioStreamPlayer = $GetPointsAudio
+
 var spawn_timer: float = 0.0
 
 var score: int = 0:
@@ -83,6 +85,8 @@ func _on_power_split_changed(values: Dictionary[String, float], group: String) -
 
 func _on_meteoroid_destroyed() -> void:
 	score += 50
+	get_points_audio.pitch_scale = randf_range(0.7, 1.3)
+	get_points_audio.play()
 
 func game_over() -> void:
 	game_over_menu.visible = true

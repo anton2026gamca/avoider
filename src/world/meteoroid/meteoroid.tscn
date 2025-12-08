@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqw5f3m8a2bxt"]
+[gd_scene load_steps=4 format=3 uid="uid://cqw5f3m8a2bxt"]
 
 [ext_resource type="Script" uid="uid://d1fdkgo7aoulk" path="res://world/meteoroid/meteoroid.gd" id="1_meteoroid"]
+[ext_resource type="AudioStream" uid="uid://djpvgnlvu2xra" path="res://assets/audio/meteoroid_destroy.wav" id="2_a4aw5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_meteoroid"]
 radius = 20.0
@@ -42,3 +43,7 @@ width = 2.0
 [node name="Line7" type="Line2D" parent="."]
 points = PackedVector2Array(-8, 18, -20, 3)
 width = 2.0
+
+[node name="DestroyAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_a4aw5")
+volume_db = -14.948

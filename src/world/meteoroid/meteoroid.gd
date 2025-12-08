@@ -7,6 +7,7 @@ var radius: float = 0
 
 @onready var lines: Array[Line2D] = [$Line1, $Line2, $Line3, $Line4, $Line5, $Line6, $Line7]
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var destroy_audio: AudioStreamPlayer = $DestroyAudio
 
 @export var random_size_multiplier_min: float = 0.8
 @export var random_size_multiplier_max: float = 1.3
@@ -48,6 +49,8 @@ func destroy() -> void:
 	collision_layer = 0
 	collision_mask = 0
 	angular_velocity = 0
+	destroy_audio.pitch_scale = randf_range(0.6, 1.4)
+	destroy_audio.play()
 	for line: Line2D in lines:
 		var tween: Tween = get_tree().create_tween()
 		tween.tween_property(line, "position", line.position + Vector2(randi_range(-75, 75), randi_range(-75, 75)), 0.5)
