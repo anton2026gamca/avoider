@@ -711,8 +711,19 @@ layout_mode = 2
 
 [node name="Left" type="VBoxContainer" parent="UI/PlayerUI/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 alignment = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/PlayerUI/HBoxContainer/Left"]
+layout_mode = 2
+theme = ExtResource("5_lquwl")
+text = "Use WASD or ARROWS to move
+SPACE to shoot
+
+There is sound
+Get as much points as possible
+
+"
+fit_content = true
 
 [node name="Stats" type="PanelContainer" parent="UI/PlayerUI/HBoxContainer/Left"]
 layout_mode = 2
@@ -787,6 +798,15 @@ size_flags_horizontal = 10
 theme = ExtResource("5_lquwl")
 theme_override_constants/separation = 8
 alignment = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/PlayerUI/HBoxContainer/Right"]
+layout_mode = 2
+theme = ExtResource("5_lquwl")
+text = "Here you  can change what youwant to put your power into
+
+"
+fit_content = true
+horizontal_alignment = 2
 
 [node name="Shields" type="PanelContainer" parent="UI/PlayerUI/HBoxContainer/Right"]
 layout_mode = 2
