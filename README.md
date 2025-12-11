@@ -11,10 +11,10 @@ This project is built using the [Godot Engine](https://godotengine.org/).
 Visit [this link](https://anton2026gamca.github.io/avoider/)
 
 ## Controls
-| Action     | Key(s)               |
-|------------|----------------------|
-| Move Up    | `W` or `Up Arrow`    |
-| Move Down  | `S` or `Down Arrow`  |
-| Move Left  | `A` or `Left Arrow`  |
-| Move Right | `D` or `Right Arrow` |
-| Shoot      | `Space`              |
+| Action       | Key(s)               |
+|--------------|----------------------|
+| Accelerate   | `W` or `Up Arrow`    |
+| Decelerate   | `S` or `Down Arrow`  |
+| Rotate Left  | `A` or `Left Arrow`  |
+| Rotate Right | `D` or `Right Arrow` |
+| Shoot        | `Space`              |
