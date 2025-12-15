@@ -6,6 +6,8 @@ I built this project for [midnight](https://midnight.hackclub.com/), an event by
 
 This project is built using the [Godot Engine](https://godotengine.org/).
 
+<img width="2729" height="1519" alt="2025-12-08_17-48-47" src="https://github.com/user-attachments/assets/837c3bf3-c12d-4499-9875-e9986890438c" />
+
 ## How to play
 
 Visit [this link](https://anton2026gamca.github.io/avoider/)
